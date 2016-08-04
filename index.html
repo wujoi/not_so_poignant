@@ -90,7 +90,10 @@
 <li>
 <strong>() Ranges</strong>: two values surrounded by parentheses and separated by an ellipsis (1..3)- numbers one through three or (‘a’..'z’)- lowercase alphabet; like an accordion; three dots means that last value is excluded (0…5)- numbers zero through 4</li>
 <li>
-<strong>[] Arrays</strong>: list surrounded by square brackets and separated by commas, stapled caterpillar, collection in a specific order</li>
+<strong>[] Arrays</strong>: list surrounded by square brackets and separated by commas, stapled caterpillar, collection in a specific order
+ex.
+rooms = ArrayMine[3, 4, 6] print "We have " + rooms.join( ", ", "%d bed" ) + " rooms available."
+“We have 3 bed, 4 bed, and 6 bed rooms available."</li>
 <li>
 <strong>{} Hashes</strong>: dictionary surrounded by curly braces, words match definitions with arrows {’name’ =&gt; ‘Peter’}, separated by commas, easy to search through</li>
 <li>
@@ -196,6 +199,65 @@
 <h3>
 <a id="chapter-four" class="anchor" href="#chapter-four" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Chapter Four: Vocabulary Part 2</h3>
 </h3>
+<li>
+  <strong>elsif</strong>: else if
+ex.
+print( if at_hotel.nil? "No clue if he's in the hotel." elsif at_hotel == true "Definitely in." elsif at_hotel == false "He's out." else "The system is on the freee-itz." end )
+</li>
+<li>
+  <strong>{} Hash</strong>: word list, code words/phrases are matched with dangerous words ex.
+CODE_WORDS = { 'catapult' => 'chucky go-go', 'firebomb' => 'Heat-Assisted Living’, 'Nigeria' => "Jerry's Dry Cleaning",}
+key => value; ’Nigeria’ => “Jerry’s Dry Cleaning” or ’Nigeria’ => ‘Jerry/’s Dry Cleaning’ (single vs. double quotes); to look up a word use [], CODE_WORDS[ ‘catapult’ ] will answer with ‘chucky go-go’
+</li>
+<li>
+  <strong># Comments</strong>: comment are comments... but as a side note gets, print and require_relative are all kernel methods</li>
+<li>
+  <strong>Destructive method</strong>: gsub! <- provide word to find and word to put in its place so idea.gsub!(real, code) replaces real with code in idea</li>
+<li>
+  <strong>strip</strong>: method for strings that trims spaces/blank lines from beginning and end of string</li>
+<li>
+  <strong>File mode</strong>: ‘w’ writes a brand-new file, ‘r’ reads form the file, ‘a’ adds to the end of the file
+ex.
+File::open( 'idea-' + idea_name + '.txt', 'w' ) do |f| f << idea end
+when the block closes with end the file closes as well, << concatenator is used to write to the file</li>
+<li>
+  <strong>Searching a directory</strong>:
+ex.
+p Dir['idea-*.txt']
+will print anything that starts with idea and ends in .txt</li>
+<li>
+  <strong>3 Arrays each with a Hash inside, all added into one big Array</strong>:
+kitty_toys = [:shape => 'sock', :fabric => 'cashmere'] + [:shape => 'mouse', :fabric => 'calico'] + [:shape => 'eggroll', :fabric => 'chenille'] kitty_toys.sort_by { |toy| toy[:fabric] }
+If you use arrows inside of an Array, you’ll end up with a Hash inside of that Array</li>
+<li>
+  <strong>3 Hashes in 1 Array</strong>:
+kitty_toys = [ {:shape => 'sock', :fabric => 'cashmere'}, {:shape => 'mouse', :fabric => 'calico'}, {:shape => 'eggroll', :fabric => 'chenille'} ]
+ex.
+kitty_toys.sort_by { |toy| toy[:shape] }.each do |toy| puts "Blixy has a #{ toy[:shape] } made of #{ toy[:fabric] }" end</li>
+<li><strong>next</strong>: skips on to the next item when iterating through a list
+ex.
+non_eggroll = 0 kitty_toys.each do |toy| next if toy[:shape] == 'eggroll' non_eggroll = non_eggroll + 1 end</li>
+<li>
+  <strong>break</strong>: kicks you out of an iterating loop
+ex.
+kitty_toys.each do |toy| break if toy[:fabric] == 'chenille' p toy end</li>
+<li>
+  <strong>===</strong>: like the double equals but sags in the middle, a bit more flexible, can be used with ranges (if double equals a range can only be equal to another range, but with triple a specific year can be equated to the range of years it falls into)</li>
+<li>
+  <strong>scope</strong>: refers to a field of vision inside methods and blocks</li>
+<li>
+  <strong>def</strong>: opens a method’s vision, global variables are available in any scope, instance variables are available inside a class scope (same with @@) </li>
+<li>
+  <strong>Scope of blocks</strong>: 
+ex.
+verb = 'rescued' ['sedated', 'sprinkled', 'electrocuted']. each do |verb| puts "Dr. Cham " + verb + " his niece Hannah." end puts "Finally, Dr. Cham " + verb + " his niece Hannah."</li>
+<li>
+  <strong>rand()</strong>: picks a random number, @energy = rand(6) between 0 and 5, and assigns that number to an instance variable</li>
+<li>
+  <strong>respond.to?</strong>: checks any object to be sure that it has a certain method </li>
+<li>
+  <strong>dup</strong>: sentence = sentence.dup creates a copy of the sentence, numbers, special variables (nil, true, false) and symbols cannot be dup’d; gsub will automatically make a copy as it does its job</li>
+
 <h3>
 <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact</h3>
 
